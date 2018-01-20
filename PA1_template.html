@@ -210,7 +210,9 @@ timeMaxSteps &lt;- paste(substr(timeMaxSteps,1,2),':', substr(timeMaxSteps,3,4),
 </div>
 <div id="devise-a-strategy-for-filling-in-all-of-the-missing-values-in-the-dataset" class="section level2">
 <h2>Devise a strategy for filling in all of the missing values in the dataset</h2>
-<pre class="r"><code>dfImputed &lt;- df
+<pre class="r"><code>#impute function just didn't work; tried all options
+#finally dropped the idea and calculated median for intervals and used that instead
+dfImputed &lt;- df
 narows &lt;- is.na(dfImputed$steps)
 avgInterval &lt;- tapply(dfImputed$steps, dfImputed$interval, median, na.rm=TRUE, simplify = TRUE)
 dfImputed$steps[narows] &lt;- avgInterval[as.character(dfImputed$interval[narows])]

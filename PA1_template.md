@@ -164,6 +164,8 @@ Number of missing values: 2304
 ## Devise a strategy for filling in all of the missing values in the dataset
 
 ```r
+#impute function just didn't work; tried all options
+#finally dropped the idea and calculated median for intervals and used that instead
 dfImputed <- df
 narows <- is.na(dfImputed$steps)
 avgInterval <- tapply(dfImputed$steps, dfImputed$interval, median, na.rm=TRUE, simplify = TRUE)
